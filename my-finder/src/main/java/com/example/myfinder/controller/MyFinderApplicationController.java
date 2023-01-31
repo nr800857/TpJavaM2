@@ -38,7 +38,7 @@ public class MyFinderApplicationController {
     @RequestMapping(value = "/getFilms")
     public String getFilms() {
         String response = restTemplate
-                .exchange("http://localhost:8010/getFilms"
+                .exchange("http://localhost:3000/getFilms"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
@@ -52,7 +52,7 @@ public class MyFinderApplicationController {
     @RequestMapping(value = "/getFilm/{name}")
     public String getFilms(@PathVariable(value = "name") String name) {
         String response = restTemplate
-                .exchange("http://localhost:8010/getFilms/{name}"
+                .exchange("http://localhost:3000/getFilms/{name}"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
@@ -66,7 +66,7 @@ public class MyFinderApplicationController {
     @RequestMapping(value = "/getFilmByDate/{date}")
     public String getFilmByDate(@PathVariable(value = "date") String date) {
         String response = restTemplate
-                .exchange("http://localhost:8010/getFilmByDate/{date}"
+                .exchange("http://localhost:3000/getFilmByDate/{date}"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
@@ -80,7 +80,7 @@ public class MyFinderApplicationController {
     @RequestMapping(value = "/getActeurs")
     public String getActeurs() {
         String response = restTemplate
-                .exchange("http://localhost:8010/getActeurs"
+                .exchange("http://localhost:3000/getActeurs"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
@@ -94,7 +94,7 @@ public class MyFinderApplicationController {
     @RequestMapping(value = "/getActeur/{name}")
     public String getActeur(@PathVariable(value = "name") String name) {
         String response = restTemplate
-                .exchange("http://localhost:8010/getActeur/{name}"
+                .exchange("http://localhost:3000/getActeur/{name}"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {
@@ -108,7 +108,7 @@ public class MyFinderApplicationController {
     @RequestMapping(value = "/getActeurByFilm/{name}")
     public String getActeurByFilm(@PathVariable(value = "name") String name) {
         String response = restTemplate
-                .exchange("http://localhost:8010/getActeurByFilm/{name}"
+                .exchange("http://localhost:3000/getActeurByFilm/{name}"
                         , HttpMethod.GET
                         , null
                         , new ParameterizedTypeReference<String>() {

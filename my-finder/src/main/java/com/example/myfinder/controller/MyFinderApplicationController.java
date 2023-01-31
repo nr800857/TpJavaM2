@@ -28,7 +28,7 @@ public class MyFinderApplicationController {
         return new RestTemplate();
     }
 
-    @ApiOperation(value = "Avoir la liste des films du ms my-movie ", response = Object.class, tags = "getFilms")
+    @ApiOperation(value = "Avoir la liste des films du ms my-movie ", response = String.class, tags = "getFilms")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Succes"),
             @ApiResponse(code = 401, message = "Non autorisé"),
@@ -47,7 +47,7 @@ public class MyFinderApplicationController {
         return response;
     }
 
-    @ApiOperation(value = "Avoir un film présent dans le système ", response = Object.class, tags = "getFilm")
+    @ApiOperation(value = "Avoir un film présent dans le système ", response = String.class, tags = "getFilm")
     @HystrixCommand(fallbackMethod = "callMyMovie_Fallback")
     @RequestMapping(value = "/getFilm/{name}")
     public String getFilms(@PathVariable(value = "name") String name) {
@@ -61,7 +61,7 @@ public class MyFinderApplicationController {
         return response;
     }
 
-    @ApiOperation(value = "Avoir les film présent dans le système selon la date ", response = Iterable.class, tags = "getFilmByDate")
+    @ApiOperation(value = "Avoir les film présent dans le système selon la date ", response = String.class, tags = "getFilmByDate")
     @HystrixCommand(fallbackMethod = "callMyMovie_Fallback")
     @RequestMapping(value = "/getFilmByDate/{date}")
     public String getFilmByDate(@PathVariable(value = "date") String date) {
@@ -75,7 +75,7 @@ public class MyFinderApplicationController {
         return response;
     }
 
-    @ApiOperation(value = "Avoir la liste des films du ms my-movie ", response = Object.class, tags = "getActeurs")
+    @ApiOperation(value = "Avoir la liste des films du ms my-movie ", response = String.class, tags = "getActeurs")
     @HystrixCommand(fallbackMethod = "callMyMovie_Fallback")
     @RequestMapping(value = "/getActeurs")
     public String getActeurs() {
@@ -89,7 +89,7 @@ public class MyFinderApplicationController {
         return response;
     }
 
-    @ApiOperation(value = "Avoir un acteur présent dans le système ", response = Acteur.class, tags = "getActeur")
+    @ApiOperation(value = "Avoir un acteur présent dans le système ", response = String.class, tags = "getActeur")
     @HystrixCommand(fallbackMethod = "callMyMovie_Fallback")
     @RequestMapping(value = "/getActeur/{name}")
     public String getActeur(@PathVariable(value = "name") String name) {
@@ -103,7 +103,7 @@ public class MyFinderApplicationController {
         return response;
     }
 
-    @ApiOperation(value = "Avoir un acteur présent dans le système selon un film", response = Acteur.class, tags = "getActeurByFilm")
+    @ApiOperation(value = "Avoir un acteur présent dans le système selon un film", response = String.class, tags = "getActeurByFilm")
     @HystrixCommand(fallbackMethod = "callMyMovie_Fallback")
     @RequestMapping(value = "/getActeurByFilm/{name}")
     public String getActeurByFilm(@PathVariable(value = "name") String name) {

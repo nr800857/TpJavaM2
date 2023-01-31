@@ -10,10 +10,10 @@ Microservice 3 my-dashboard
 localhost:8761
 
 Les différents liens :
-/getFilms
-/getActeurs
-/getFilm{name}
-/getActeur{name}
-/getFilmByDate/{date}
-/getActeurByFilm/{name}
-/deleteActeur/{name}
+- /getFilms
+- /getActeurs
+- /getFilm{name}
+- /getActeur{name}
+- /getFilmByDate/{date}
+- /getActeurByFilm/{name}
+- /deleteActeur/{name}

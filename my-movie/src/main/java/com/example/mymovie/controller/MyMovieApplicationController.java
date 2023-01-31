@@ -61,7 +61,7 @@ public class MyMovieApplicationController {
         return null;
     }
 
-    @ApiOperation(value = "Avoir les film présent dans le système selon la date ", response = Film.class, tags = "getFilmByDate")
+    @ApiOperation(value = "Avoir les film présent dans le système selon la date ", response = Iterable.class, tags = "getFilmByDate")
     @RequestMapping(value = "/getFilmByDate/{date}")
     public List<Film> getFilmByDate(@PathVariable(value = "date") String date) {
         List<Film> resu = new ArrayList<>();
@@ -92,15 +92,22 @@ public class MyMovieApplicationController {
 
     @ApiOperation(value = "Avoir un acteur présent dans le système selon un film", response = Acteur.class, tags = "getActeurByFilm")
     @RequestMapping(value = "/getActeurByFilm/{name}")
-    public List<Acteur> getActeurByFilm(@PathVariable(value = "name") String name) {
-        List<Acteur> resu = new ArrayList<>();
+    public Acteur getActeurByFilm(@PathVariable(value = "name") String name) {
+        for(Film f: films){
+            if(f.getPrincipal().getNom().equals(name))
+                return f.getPrincipal();
+        }
+        return null;
+    }
+
+    @ApiOperation(value = "Supprimer un acteur présent dans le système selon son nom ", response = Acteur.class, tags = "deleteActeur")
+    @RequestMapping(value = "/deleteActeur/{name}")
+    public void deleteActeur(@PathVariable(value = "name") String name) {
         for (Acteur a : acteurs){
-            for(Film f : a.getFilmographie()){
-                if(f.getTitre().equals(name))
-                    resu.add(a);
+            if(a.getNom().equals(name)){
+                acteurs.remove(a);
             }
         }
-        return resu;
     }
 
 }
